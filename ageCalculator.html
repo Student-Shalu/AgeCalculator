@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            height: 100vh;
+            background: rgb(5, 63, 155);
+            background: linear-gradient(90deg, rgba(5, 63, 155, 1) 0%, rgba(165, 161, 239, 1) 50%, rgba(189, 186, 236, 1) 82%);
+            font-family: sans-serif;
+        }
+
+        .container {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            /* align-items: center; */
+            flex-direction: column;
+            margin: 100px 50px;
+        }
+
+        .container h1 {
+            font-size: 5rem;
+            text-align: left;
+            font-weight: 900;
+        }
+
+        .container .first {
+            color: white;
+        }
+
+        .container .sec {
+            color: rgb(227, 227, 8);
+        }
+
+        .form {
+            padding: 30px;
+            border-radius: 10px;
+            background-color: rgb(211, 209, 205);
+            width: 70%;
+        }
+
+        #date {
+            width: 65%;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            border: none;
+            outline: none;
+        }
+
+        #calc {
+            font-size: 1.5rem;
+            margin: 0 15px;
+            padding: 8px 10px;
+            border-radius: 10px;
+            background-color: rgb(225, 225, 4);
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .para {
+            margin-top: 30px;
+            font-size: 1.5rem;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="first">JavaScript</h1>
+        <h1 class="sec">Age Calculator</h1>
+        <div class="form">
+            <input type="date" name="" id="date">
+            <input type="button" value="Calculate" id="calc" onclick="Calculator()">
+        </div>
+        <div class="para"></div>
+    </div>
+    <script>
+        function Calculator(){
+            let birthDate=new Date(document.getElementById('date').value);
+            let now=new Date();
+            let ageInMonth=now.getTime()-birthDate.getTime();
+            let ageInSec=ageInMonth / 1000;
+            let ageInMin=ageInSec / 60;
+            let ageInHrs=ageInMin / 60;
+            let ageInDay=ageInHrs / 24;
+            let ageInMonths = ageInDay / 30;
+            let ageInYears=ageInMonths / 12;
+            document.querySelector('.para').innerHTML=`You are ${Math.floor(ageInYears)} years, ${Math.floor(ageInMonths)%12} Months and ${Math.floor(ageInDay)%30} Days old`;
+
+        }
+    </script>
+</body>
+
+</html>
